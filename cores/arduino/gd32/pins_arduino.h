@@ -196,7 +196,7 @@ PinName analog_pin_to_PinName(uint32_t pin);
 #define PORT_CLEAR_REG(p)            (GPIO_BC(p))
 #endif
 
-#if defined(GD32F30x)
+#if defined(GD32F20x) || defined(GD32F30x)
 #define PORT_CTL_REG(p)             (GPIO_CTL0(P))
 #else
 #define PORT_CTL_REG (p)            (GPIO_CTL(P))

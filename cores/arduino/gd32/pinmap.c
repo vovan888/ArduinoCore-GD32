@@ -23,7 +23,7 @@
 
 extern const int GD_GPIO_MODE[];
 extern const int GD_GPIO_SPEED[];
-#if defined(GD32F30x) || defined(GD32F10x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32F10x) || defined(GD32E50X)
 extern const int GD_GPIO_REMAP[];
 #endif
 #if defined(GD32F3x0) || defined(GD32F1x0) || defined(GD32F4xx) || defined(GD32E23x)
@@ -67,7 +67,7 @@ void pin_function(PinName pin, int function)
 
     uint32_t gpio = gpio_clock_enable(port);
 
-#if defined(GD32F30x) || defined(GD32F10x)|| defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32F10x)|| defined(GD32E50X)
     gpio_init(gpio, GD_GPIO_MODE[mode], GD_GPIO_SPEED[speed], gd_pin);
     if (remap != 0) {
         rcu_periph_clock_enable(RCU_AF);

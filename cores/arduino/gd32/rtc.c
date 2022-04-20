@@ -34,7 +34,7 @@ OF SUCH DAMAGE.
   have no good solution other than getting the official firmware
   library changed. -bjc (2021-Aug-20)
 */
-#if defined(GD32F30X_HD) || defined (GD32F30X_XD) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30X_HD) || defined (GD32F30X_XD) || defined(GD32E50X)
 #define RTC_ALARM_IRQn RTC_Alarm_IRQn
 #endif
 
@@ -102,7 +102,7 @@ void rtc_Init(void)
     nvic_priority_group_set(NVIC_PRIGROUP_PRE2_SUB2);
     nvic_irq_enable(RTC_IRQn, 2, 0);
 #endif 
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     nvic_irq_enable(RTC_ALARM_IRQn, 2, 0);
     /* enable PMU and BKPI clocks */
     rcu_periph_clock_enable(RCU_BKPI);
@@ -112,7 +112,7 @@ void rtc_Init(void)
     pmu_backup_write_enable();
 #if defined(KILL_RTC_BACKUP_DOMAIN_ON_RESTART)
     /* reset backup domain */
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     bkp_deinit();
 #elif defined(GD32F3x0) || defined(GD32F1x0)
     rcu_bkp_reset_enable();
@@ -130,13 +130,13 @@ void rtc_Init(void)
     /* wait for RTC registers synchronization */
     rtc_register_sync_wait();
 
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     /* wait until last write operation on RTC registers has finished */
     rtc_lwoff_wait();
 #endif
     /* set RTC prescaler: set RTC period to 1s */
     rtc_prescaler_set(32767);
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     /* wait until last write operation on RTC registers has finished */
     rtc_lwoff_wait();
 #endif
@@ -150,7 +150,7 @@ void rtc_Init(void)
 */
 void rtc_setUTCTime(UTCTimeStruct *utcTime)
 {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     uint32_t secTime = mkTimtoStamp(utcTime) - SECONDS_PER_HOUR * 8;
     /* wait until last write operation on RTC registers has finished */
     rtc_lwoff_wait();
@@ -179,7 +179,7 @@ void rtc_setUTCTime(UTCTimeStruct *utcTime)
 */
 void rtc_getUTCTime(UTCTimeStruct *utcTime)
 {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     uint32_t timestamp = rtc_getSecTime() + SECONDS_PER_HOUR * 8;
     uint32_t day = timestamp % SECONDS_PER_DAY;  //seconds less then one day
 
@@ -221,7 +221,7 @@ void rtc_getUTCTime(UTCTimeStruct *utcTime)
 */
 void rtc_setSecTime(uint32_t secTime)
 {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     /* wait until last write operation on RTC registers has finished */
     rtc_lwoff_wait();
     /* change the current time */
@@ -262,7 +262,7 @@ uint32_t rtc_getSecTime(void)
 */
 void rtc_setAlarmTime(uint32_t alarmTime)
 {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     /* wait until last write operation on RTC registers has finished */
     rtc_lwoff_wait();
     /* change the current time */
@@ -302,7 +302,7 @@ void rtc_attachInterrupt(INT_MODE mode)
 {
     uint32_t interrupt = 0;
     switch (mode) {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
         case INT_SECOND_MODE:
             interrupt = RTC_INT_SECOND;
             break;
@@ -311,7 +311,7 @@ void rtc_attachInterrupt(INT_MODE mode)
             interrupt = RTC_INT_ALARM;
             exti_init(EXTI_17, EXTI_INTERRUPT, EXTI_TRIG_RISING);
             break;
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
         case INT_OVERFLOW_MODE:
             interrupt = RTC_INT_OVERFLOW;
             break;
@@ -330,7 +330,7 @@ void rtc_detachInterrupt(INT_MODE mode)
 {
     uint32_t interrupt = 0;
     switch (mode) {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
         case INT_SECOND_MODE:
             interrupt = RTC_INT_SECOND;
             break;
@@ -338,7 +338,7 @@ void rtc_detachInterrupt(INT_MODE mode)
         case INT_ALARM_MODE:
             interrupt = RTC_INT_ALARM;
             break;
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
         case INT_OVERFLOW_MODE:
             interrupt = RTC_INT_OVERFLOW;
             break;
@@ -355,7 +355,7 @@ void rtc_detachInterrupt(INT_MODE mode)
 */
 void RTC_IRQHandler(void)
 {
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
     if (rtc_flag_get(RTC_FLAG_SECOND) != RESET) {
         rtc_flag_clear(RTC_FLAG_SECOND);
         RTC_Handler(INT_SECOND_MODE);
@@ -379,7 +379,7 @@ void RTC_IRQHandler(void)
     \param[out] none
     \retval     none
 */
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) ||  defined(GD32E50X)
 void RTC_Alarm_IRQHandler(void)
 {
     if (rtc_flag_get(RTC_FLAG_ALARM) != RESET) {

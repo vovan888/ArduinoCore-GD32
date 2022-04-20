@@ -142,7 +142,7 @@ extern HardwareSerial Serial;
 #endif
 
 #if defined(USE_USART1_SERIAL)
-extern HardwareSerial Serial;
+extern HardwareSerial Serial1;
 #define HAVE_HWSERIAL1
 #endif
 

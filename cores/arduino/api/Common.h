@@ -112,6 +112,9 @@ void attachInterrupt(pin_size_t interruptNumber, voidFuncPtr callback, PinStatus
 void attachInterruptParam(pin_size_t interruptNumber, voidFuncPtrParam callback, PinStatus mode, void* param);
 void detachInterrupt(pin_size_t interruptNumber);
 
+#define interrupts() __enable_irq()
+#define noInterrupts() __disable_irq()
+
 void setup(void);
 void loop(void);
 

@@ -33,7 +33,7 @@ OF SUCH DAMAGE.
 #define TIMER5_IRQ_Name TIMER5_IRQn
 #endif 
 
-#if defined(GD32E23x) || defined(GD32F1x0) || defined(GD32F3x0) || defined(GD32E50X)
+#if defined(GD32E23x) || defined(GD32F1x0) || defined(GD32F3x0) || defined(GD32E50X) || defined(GD32F20x)
 #define TIMER0_IRQ_Name TIMER0_Channel_IRQn
 #else
 #define TIMER0_IRQ_Name TIMER0_IRQn
@@ -55,6 +55,8 @@ OF SUCH DAMAGE.
 #define  TIMER0_Update_IRQ_Name TIMER0_UP_TIMER9_IRQn
 #define TIMER9_IRQ_NAME TIMER0_UP_TIMER9_IRQn
 #endif
+#elif defined(GD32F20x)
+#define  TIMER0_Update_IRQ_Name TIMER0_UP_TIMER9_IRQn
 #endif
 
 #if defined(GD32E50X)
@@ -73,7 +75,14 @@ OF SUCH DAMAGE.
 #define NO_TIMER_12
 #define NO_TIMER_13
 #endif
-#else 
+#elif defined(GD32F20x)
+#define TIMER7_IRQ_NAME TIMER7_Channel_IRQn
+#define TIMER7_UP_IRQ_NAME TIMER7_UP_TIMER12_IRQn
+#define TIMER10_IRQ_NAME TIMER0_TRG_CMT_TIMER10_IRQn
+#define TIMER11_IRQ_NAME TIMER7_BRK_TIMER11_IRQn
+#define TIMER12_IRQ_NAME TIMER7_UP_TIMER12_IRQn
+#define TIMER13_IRQ_NAME TIMER7_TRG_CMT_TIMER13_IRQn
+#else
 #define TIMER7_IRQ_NAME TIMER7_IRQn
 #define TIMER7_UP_IRQ_NAME TIMER7_IRQn
 #endif
@@ -91,6 +100,13 @@ OF SUCH DAMAGE.
 #define HAS_TIMER_12
 #define HAS_TIMER_13
 #endif
+#elif defined(GD32F20x)
+#define HAS_TIMER_8
+#define HAS_TIMER_9
+#define HAS_TIMER_10
+#define HAS_TIMER_11
+#define HAS_TIMER_12
+#define HAS_TIMER_13
 #else
 #ifndef NO_TIMER_9
 #define HAS_TIMER_9
@@ -735,7 +751,7 @@ void PWM_init(pwmDevice_t *pwmDevice, pwmPeriodCycle_t *pwmPeriodCycle)
     nvic_irq_enable(getTimerCCIrq(periph), 2, 2);
 #endif
     timer_clock_enable(periph);
-#if defined(GD32F30x)
+#if defined(GD32F20x) || defined(GD32F30x)
     rcu_periph_clock_enable(RCU_AF);
 #elif defined(GD32F3x0) || defined(GD32F1x0) || defined(GD32F4xx)
     rcu_periph_clock_enable(RCU_CFGCMP);

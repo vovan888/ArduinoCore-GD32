@@ -34,7 +34,10 @@
 // HardwareSerial instance if the user doesn't also refer to it.
 
 #if defined(HAVE_HWSERIAL)
-HardwareSerial Serial(RX0, TX0, 0);
+#ifndef SERIAL0_UART_INDEX
+#define SERIAL0_UART_INDEX 0
+#endif
+HardwareSerial Serial(RX0, TX0, SERIAL0_UART_INDEX);
 void serialEvent() __attribute__((weak));
 bool Serial0_available()
 {
@@ -43,52 +46,64 @@ bool Serial0_available()
 #endif
 
 #if defined(HAVE_HWSERIAL1)
-HardwareSerial Serial(RX, TX, 1);
-void serialEvent() __attribute__((weak));
-bool Serial_available()
+#ifndef SERIAL1_UART_INDEX
+#define SERIAL1_UART_INDEX 1
+#endif
+HardwareSerial Serial1(RX1, TX1, SERIAL1_UART_INDEX);
+void serialEvent1() __attribute__((weak));
+bool Serial1_available()
 {
-    return Serial.available() > 0;
+    return Serial1.available() > 0;
 }
 #endif
 
 #if defined(HAVE_HWSERIAL2)
-HardwareSerial Serial2(RX2, TX2, 2);
+#ifndef SERIAL2_UART_INDEX
+#define SERIAL2_UART_INDEX 2
+#endif
+HardwareSerial Serial2(RX2, TX2, SERIAL2_UART_INDEX);
 void serialEvent2() __attribute__((weak));
 bool Serial2_available()
 {
-    return Serial.available() > 0;
+    return Serial2.available() > 0;
 }
 #endif
 
 #if defined(HAVE_HWSERIAL3)
-HardwareSerial Serial3(RX3, TX3, 3);
+#ifndef SERIAL3_UART_INDEX
+#define SERIAL3_UART_INDEX 3
+#endif
+HardwareSerial Serial3(RX3, TX3, SERIAL3_UART_INDEX);
 void serialEvent3() __attribute__((weak));
-bool Serial_available()
+bool Serial3_available()
 {
-    return Serial.available() > 0;
+    return Serial3.available() > 0;
 }
 #endif
 
 #if defined(HAVE_HWSERIAL4)
-HardwareSerial Serial4(RX4, TX4, 4);
+#ifndef SERIAL4_UART_INDEX
+#define SERIAL4_UART_INDEX 4
+#endif
+HardwareSerial Serial4(RX4, TX4, SERIAL4_UART_INDEX);
 void serialEvent4() __attribute__((weak));
 bool Serial4_available()
 {
-    return Serial.available() > 0;
+    return Serial4.available() > 0;
 }
 #endif
 
 
 void serialEventRun(void)
 {
-#if defined(HAVE_HWSERIAL0)
+#if defined(HAVE_HWSERIAL)
     if (serialEvent && Serial0_available()) {
         serialEvent();
     }
 #endif
 #if defined(HAVE_HWSERIAL1)
-    if (serialEvent && Serial_available()) {
-        serialEvent();
+    if (serialEvent1 && Serial1_available()) {
+        serialEvent1();
     }
 #endif
 #if defined(HAVE_HWSERIAL2)

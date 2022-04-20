@@ -8,6 +8,8 @@
 #include "system_gd32e23x.c"
 #elif defined(GD32E50X)
 #include "system_gd32e50x.c"
+#elif defined(GD32F20x)
+#include "system_gd32f20x.c"
 #else
 #error "Unknown chip series!"
 #endif

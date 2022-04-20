@@ -42,6 +42,10 @@ OF SUCH DAMAGE.
 
 #define PWM_NUMS  40
 
+#if defined(GD32F20x)
+#define ADC_NUMS  3
+#endif
+
 #if defined(GD32F30x)
 #if (defined(GD32F30X_HD) || defined(GD32F30X_XD))
 #define ADC_NUMS  3
@@ -79,9 +83,9 @@ void set_dac_value(PinName pinname, uint16_t value)
         pinmap_pinout(pinname, PinMap_DAC);
         rcu_periph_clock_enable(RCU_DAC);
         dac_deinit();
-#if (defined(GD32F1x0) && defined(GD32F170_190)) || defined(GD32F30x) || defined(GD32E50X)
+#if (defined(GD32F1x0) && defined(GD32F170_190)) || defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X)
         dac_trigger_disable(dac_periph);
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X)
         dac_wave_mode_config(dac_periph, DAC_WAVE_DISABLE);
 #endif
         dac_output_buffer_enable(dac_periph);
@@ -134,7 +138,7 @@ uint16_t get_adc_value(PinName pinname)
         pinmap_pinout(pinname, PinMap_ADC);
         adc_clock_enable(adc_periph);
 
-#if defined(GD32F30x)|| defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x)|| defined(GD32E50X)
         rcu_adc_clock_config(RCU_CKADC_CKAPB2_DIV6);
         adc_mode_config(ADC_MODE_FREE);
         adc_resolution_config(adc_periph, ADC_RESOLUTION_12B);
@@ -149,14 +153,14 @@ uint16_t get_adc_value(PinName pinname)
         adc_data_alignment_config(ADC_DATAALIGN_RIGHT);
         adc_channel_length_config(ADC_REGULAR_CHANNEL, 1U);
 #endif
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X)
         adc_external_trigger_source_config(adc_periph, ADC_REGULAR_CHANNEL, ADC0_1_2_EXTTRIG_REGULAR_NONE);
 #elif defined(GD32VF103) /* what?! Code for a RISC-V MCU here? */
         adc_external_trigger_source_config(adc_periph, ADC_REGULAR_CHANNEL, ADC0_1_EXTTRIG_REGULAR_NONE);
 #elif defined(GD32F3x0) || defined(GD32F1x0)
         adc_external_trigger_source_config(ADC_REGULAR_CHANNEL, ADC_EXTTRIG_REGULAR_NONE);
 #endif
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X)
         adc_external_trigger_config(adc_periph, ADC_REGULAR_CHANNEL, ENABLE);
         adc_enable(adc_periph);
         delay(1U);
@@ -169,7 +173,7 @@ uint16_t get_adc_value(PinName pinname)
 #endif
         ADC_[index].isactive = true;
     }
-#if defined(GD32F30x) || defined(GD32E50X)
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X)
     adc_regular_channel_config(adc_periph, 0U, channel, ADC_SAMPLETIME_7POINT5);
     adc_software_trigger_enable(adc_periph, ADC_REGULAR_CHANNEL);
     while (!adc_flag_get(adc_periph, ADC_FLAG_EOC));
@@ -205,7 +209,7 @@ uint8_t get_adc_index(uint32_t instance)
             index = 1;
             break;
 #endif
-#if (defined(GD32F30X_HD) || defined(GD32F30X_XD))
+#if (defined(GD32F20X_CL) || defined(GD32F30X_HD) || defined(GD32F30X_XD))
         case ADC2:
             index = 2;
             break;
@@ -353,14 +357,14 @@ void adc_clock_enable(uint32_t instance)
 {
     rcu_periph_enum temp;
     switch (instance) {
-#if defined(GD32F30x) || defined(GD32E50X) //todo: other series
+#if defined(GD32F20x) || defined(GD32F30x) || defined(GD32E50X) //todo: other series
         case ADC0:
             temp = RCU_ADC0;
             break;
         case ADC1:
             temp = RCU_ADC1;
             break;
-#if (defined(GD32F30X_HD) || defined(GD32F30X_XD))
+#if (defined(GD32F20X_CL) || defined(GD32F30X_HD) || defined(GD32F30X_XD))
         case ADC2:
             temp = RCU_ADC2;
             break;

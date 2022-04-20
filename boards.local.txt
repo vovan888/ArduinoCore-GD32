@@ -1,0 +1,67 @@
+bigtree_gd_tft35_e3_v3_0.name=BIGTREE_GD_TFT35_E3_V3_0
+
+bigtree_gd_tft35_e3_v3_0.build.core=arduino
+bigtree_gd_tft35_e3_v3_0.build.board=bigtree_gd_tft35_e3_v3_0
+bigtree_gd_tft35_e3_v3_0.build.mcu=cortex-m3
+bigtree_gd_tft35_e3_v3_0.build.series=GD32F20X_CL
+
+# create a new entry for a new BIGTREE_GD_TFT35_E3_V3_0 board here
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0=BIGTREE_GD_TFT35_E3_V3_0
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.upload.maximum_size=262144
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.upload.maximum_data_size=49152
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.build.board=BIGTREE_GD_TFT35_E3_V3_0
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.build.series=GD32F20x
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.build.product_line=GD32F20X_CL
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.build.variant=BIGTREE_GD_TFT35_E3_V3_0
+bigtree_gd_tft35_e3_v3_0.menu.pnum.BIGTREE_GD_TFT35_E3_V3_0.upload.openocd_script=target/stm32f1x.cfg
+
+#Upload menu
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.serialMethod=gd32flash (Serial)
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.serialMethod.upload.protocol= maple_serial
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.serialMethod.upload.options=
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.serialMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG=1
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.serialMethod.upload.tool=serial_upload
+
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.gdlinkMethod=GDlink (SWD)
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.gdlinkMethod.upload.protocol=gdlink
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.gdlinkMethod.upload.options=
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.gdlinkMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG=1 -DSERIAL_USB -DGENERIC_BOOTLOADER
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.gdlinkMethod.upload.tool=gdlink_upload
+
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.stlinkMethod=STLink (SWD)
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.stlinkMethod.upload.protocol=stlink
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.stlinkMethod.upload.options=
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.stlinkMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG=1 -DSERIAL_USB -DGENERIC_BOOTLOADER
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.stlinkMethod.upload.tool=stlink_upload
+
+
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.jlinkMethod=Jlink (SWD)
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.jlinkMethod.upload.protocol=jlink
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.jlinkMethod.upload.options=
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.jlinkMethod.build.upload_flags=-DCONFIG_MAPLE_MINI_NO_DISABLE_DEBUG=1 -DSERIAL_USB -DGENERIC_BOOTLOADER
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.jlinkMethod.upload.tool=jlink_upload
+
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod=dfu-util (DFU - STMDuino bootloader)
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.upload.protocol=dfu
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.upload.tool=dfu-util
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.upload.options=
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.build.flash_offset=0x2000
+
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.upload.pid=0x0004
+bigtree_gd_tft35_e3_v3_0.menu.upload_method.dfuUtilMethod.upload.vid=0x1209
+
+
+# Optimizations
+bigtree_gd_tft35_e3_v3_0.menu.opt.osstd=Smallest (default)
+bigtree_gd_tft35_e3_v3_0.menu.opt.o1std=Fast (-O1)
+bigtree_gd_tft35_e3_v3_0.menu.opt.o1std.build.flags.optimize=-O1
+bigtree_gd_tft35_e3_v3_0.menu.opt.o1std.build.flags.ldspecs=
+bigtree_gd_tft35_e3_v3_0.menu.opt.o2std=Faster (-O2)
+bigtree_gd_tft35_e3_v3_0.menu.opt.o2std.build.flags.optimize=-O2
+bigtree_gd_tft35_e3_v3_0.menu.opt.o2std.build.flags.ldspecs=
+bigtree_gd_tft35_e3_v3_0.menu.opt.o3std=Fastest (-O3)
+bigtree_gd_tft35_e3_v3_0.menu.opt.o3std.build.flags.optimize=-O3
+bigtree_gd_tft35_e3_v3_0.menu.opt.o3std.build.flags.ldspecs=
+bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd=Debug (-g)
+bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd.build.flags.optimize=-Og
+bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd.build.flags.ldspecs= 

@@ -72,10 +72,10 @@ static rcu_periph_enum usart_clk[UART_NUM]  = {
 #ifdef USART2
     RCU_USART2,
 #endif
-#ifdef USART3
+#ifdef UART3
     RCU_UART3,
 #endif
-#ifdef USART4
+#ifdef UART4
     RCU_UART4
 #endif
 };
@@ -85,10 +85,10 @@ static IRQn_Type usart_irq_n[UART_NUM]      = {
 #ifdef USART2
     USART2_IRQn,
 #endif
-#ifdef USART3
+#ifdef UART3
     UART3_IRQn,
 #endif
-#ifdef USART4
+#ifdef UART4
     UART4_IRQn
 #endif
 };

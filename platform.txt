@@ -64,7 +64,7 @@ build.xSerial=
 #build.enable_virtio=
 build.startup_file=
 build.flags.fp=
-build.flags.optimize=-O0
+build.flags.optimize=-Os
 build.flags.ldspecs=--specs=nano.specs
 
 # compile patterns

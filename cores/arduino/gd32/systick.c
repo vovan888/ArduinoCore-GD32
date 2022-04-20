@@ -58,6 +58,8 @@ void systick_config(void)
     NVIC_SetPriority(SysTick_IRQn, 0x00U);
 }
 
+void systickUserCallback(void) __attribute__((weak));
+
 /*!
     \brief      this function handles SysTick exception
     \param[in]  none
@@ -67,6 +69,8 @@ void systick_config(void)
 void SysTick_Handler(void)
 {
     gd_ticks++;
+
+    systickUserCallback();
 }
 
 /*!
@@ -93,4 +97,13 @@ uint32_t getCurrentMicros(void)
     uint32_t systick_load = SysTick->LOAD + 1;
     uint32_t us = ((systick_load - systick_value) * 1000) / systick_load;
     return (ms * 1000 + us);
+}
+
+/**
+  * @brief  SYSTICK user callback.
+  * @retval None
+  */
+__attribute__((weak)) void systickUserCallback(void)
+{
+    /* when the callback is needed, the systickUserCallback should be implemented in the user file */
 }

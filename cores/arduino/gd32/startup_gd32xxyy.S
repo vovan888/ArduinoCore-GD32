@@ -24,6 +24,8 @@
 #include "startup_gd32e508.S"
 #elif defined(GD32EPRT)
 #include "startup_gd32eprt.S"
+#elif defined(GD32F20x)
+#include "startup_gd32f20x_cl.S"
 #else
 #error "Unknown chip series!"
 #endif

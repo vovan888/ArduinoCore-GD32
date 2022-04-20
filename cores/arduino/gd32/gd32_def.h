@@ -38,6 +38,11 @@ OF SUCH DAMAGE.
 #define GD32_CORE_VERSION          ((GD32_CORE_VERSION_MAJOR << 16U)\
                                     |(GD32_CORE_VERSION_MINOR << 8U)\
                                     |(GD32_CORE_VERSION_PATCH )
+
+#ifndef F_CPU
+#define F_CPU SystemCoreClock
+#endif
+
 /**
  * Libc porting layers
  */
