@@ -3,7 +3,7 @@
     {
       "email": "",
       "help": {
-        "online": "https://github.com/CommunityGD32Cores/ArduinoCore-GD32"
+        "online": "https://github.com/vovan888/ArduinoCore-GD32"
       },
       "maintainer": "Some random folks",
       "name": "GD32Community",
@@ -20,6 +20,9 @@
             },
             {
               "name": "GD32F303CC Generic"
+            },
+            {
+              "name": "BIGTREE_GD_TFT35_E3_V3_0"
             }
           ],
           "category": "Contributed",
@@ -44,7 +47,7 @@
               "name": "dfu-util"
             }
           ],
-          "url": "https://github.com/CommunityGD32Cores/ArduinoCore-GD32/archive/refs/heads/main.zip",
+          "url": "https://github.com/vovan888/ArduinoCore-GD32/archive/refs/heads/main.zip",
           "version": "0.0.1"
         }
       ],
@@ -194,7 +197,7 @@
           ]
         }
       ],
-      "websiteURL": "https://github.com/CommunityGD32Cores/ArduinoCore-GD32/"
+      "websiteURL": "https://github.com/vovan888/ArduinoCore-GD32/"
     }
   ]
 }
