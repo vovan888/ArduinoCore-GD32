@@ -1,0 +1,48 @@
+# Syntax Coloring Map For ExampleLibrary
+
+# Datatypes (KEYWORD1)
+FIL    KEYWORD1
+DIR    KEYWORD1
+FILINFO    KEYWORD1
+MKFS_PARM    KEYWORD1
+FRESULT    KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+f_open KEYWORD2
+f_close KEYWORD2
+f_read KEYWORD2
+f_write KEYWORD2
+f_lseek KEYWORD2
+f_truncate KEYWORD2
+f_sync KEYWORD2
+f_opendir KEYWORD2
+f_closedir KEYWORD2
+f_readdir KEYWORD2
+f_findfirst KEYWORD2
+f_findnext KEYWORD2
+f_mkdir KEYWORD2
+f_unlink KEYWORD2
+f_rename KEYWORD2
+f_stat KEYWORD2
+f_chmod KEYWORD2
+f_utime KEYWORD2
+f_chdir KEYWORD2
+f_chdrive KEYWORD2
+f_getcwd KEYWORD2
+f_getfree KEYWORD2
+f_getlabel KEYWORD2
+f_setlabel KEYWORD2
+f_forward KEYWORD2
+f_expand KEYWORD2
+f_mount KEYWORD2
+f_mkfs KEYWORD2
+f_fdisk KEYWORD2
+f_setcp KEYWORD2
+f_putc KEYWORD2
+f_puts KEYWORD2
+f_printf KEYWORD2
+f_gets KEYWORD2
+
+# Instances (KEYWORD2)
+
+# Constants (LITERAL1)

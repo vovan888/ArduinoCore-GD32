@@ -40,7 +40,7 @@ OF SUCH DAMAGE.
 #include "drv_usbh_int.h"
 #include <string.h>
 
-usb_core_driver usbh_core;
+usb_core_driver usbh_core = {0};
 
 /* local function prototypes ('static') */
 static uint8_t usbh_sof(usbh_host *uhost);

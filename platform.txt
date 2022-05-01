@@ -5,7 +5,7 @@ version=1.0.0
 
 #compile variables
 ##compile Include 
-compiler.gd.extra_include= "-I{build.source.path}" "-isystem{build.core.path}/api/deprecated-avr-comp" "-isystem{build.core.path}/api/deprecated" "-I{build.core.path}/gd32" "-isystem{build.system.path}/startup" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_standard_peripheral/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_standard_peripheral/Include"  "-isystem{build.system.path}/{build.series}_firmware/CMSIS" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Include" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Source/GCC" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Source"
+compiler.gd.extra_include= "-I{build.source.path}" "-isystem{build.core.path}/api/deprecated-avr-comp" "-isystem{build.core.path}/api/deprecated" "-I{build.core.path}/gd32" "-I{build.core.path}/gd32/usb" "-isystem{build.system.path}/startup" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_standard_peripheral/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_standard_peripheral/Include"  "-isystem{build.system.path}/{build.series}_firmware/CMSIS" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Include" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Source/GCC" "-isystem{build.system.path}/{build.series}_firmware/CMSIS/GD/{build.series}/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/driver/Include" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/host/core/Include" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/host/class/msc/Include" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/driver/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/host/core/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/host/class/msc/Source" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/ustd/common" "-isystem{build.system.path}/{build.series}_firmware/{build.series}_usbfs_library/ustd/class/msc"
 
 ## compile warning
 compiler.warning_flags=-w
@@ -54,13 +54,17 @@ build.flash_offset=0
 build.bootloader_flags=-DVECT_TAB_OFFSET={build.flash_offset}
 build.ldscript=ldscript.ld
 
+# USB Flags
+# ---------
+build.usb_flags={build.usb_speed}
+
 ## Build information's flag
-build.info.flags=-D{build.series} -D{build.product_line} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DBOARD_NAME="{build.board}" -DARDUINO_UPLOAD_MAXIMUM_SIZE={upload.maximum_size}
+build.info.flags=-D{build.series} -D{build.product_line} {build.enable_usb} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DBOARD_NAME="{build.board}" -DARDUINO_UPLOAD_MAXIMUM_SIZE={upload.maximum_size}
 
 ## Defaults config
 build.xSerial=
-#build.enable_usb=
-#build.usb_speed=
+build.enable_usb=
+build.usb_speed=
 #build.enable_virtio=
 build.startup_file=
 build.flags.fp=

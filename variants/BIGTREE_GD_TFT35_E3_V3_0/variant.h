@@ -174,6 +174,13 @@ extern "C" {
 #define DAC_RESOLUTION          12
 
 
+/* USB host definitions */
+// VBUS switching not used on this board
+//#define HOST_POWERSW_PORT      GPIOD
+//#define HOST_POWERSW_VBUS      GPIO_PIN_2
+//#define HOST_POWERSW_PORT_RCC  RCU_GPIOD
+
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

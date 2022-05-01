@@ -55,6 +55,8 @@ usbh_class usbh_msc = {
     usbh_msc_itf_deinit,
     usbh_msc_req,
     usbh_msc_handle,
+    NULL,
+    NULL
 };
 
 /*!

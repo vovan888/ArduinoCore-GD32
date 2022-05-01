@@ -80,6 +80,8 @@ Infinite_Loop:
 * 
 *******************************************************************************/
    .section  .vectors,"a",%progbits
+   .type  __gVectors, %object
+   .size  __gVectors, .-__gVectors
    .global __gVectors
 
 __gVectors:

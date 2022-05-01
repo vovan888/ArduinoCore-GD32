@@ -64,4 +64,8 @@ bigtree_gd_tft35_e3_v3_0.menu.opt.o3std.build.flags.optimize=-O3
 bigtree_gd_tft35_e3_v3_0.menu.opt.o3std.build.flags.ldspecs=
 bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd=Debug (-g)
 bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd.build.flags.optimize=-Og
-bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd.build.flags.ldspecs= 
+bigtree_gd_tft35_e3_v3_0.menu.opt.ogstd.build.flags.ldspecs=
+
+bigtree_gd_tft35_e3_v3_0.menu.usb.none=None
+bigtree_gd_tft35_e3_v3_0.menu.usb.HOST=USB Host
+bigtree_gd_tft35_e3_v3_0.menu.usb.HOST.build.enable_usb={build.usb_flags} -DUSE_HOST_MODE -DUSE_USB_FS

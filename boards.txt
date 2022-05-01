@@ -1,6 +1,7 @@
 # See: https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 
 menu.pnum=Board part number
+menu.usb=USB support (if available)
 menu.upload_method=Upload method
 menu.opt=Optimize
 

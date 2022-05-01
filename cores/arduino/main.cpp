@@ -25,6 +25,7 @@
  *****************************************************************************/
 #include "Arduino.h"
 
+#include "usb.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -50,8 +51,12 @@ int main(void)
 {
     setup();
 
+    usb_init();
+
     while (1) {
         loop();
+
+        usb_task();
     }
     return 0;
 }

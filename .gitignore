@@ -1,2 +1,3 @@
 .vscode
 .idea/*
+libraries/FatFs/.development

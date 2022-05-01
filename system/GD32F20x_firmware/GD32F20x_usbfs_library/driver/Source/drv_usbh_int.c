@@ -39,13 +39,6 @@ OF SUCH DAMAGE.
 #include "drv_usbh_int.h"
 #include "usbh_core.h"
 
-#if defined   (__CC_ARM)        /*!< ARM compiler */
-#pragma O0
-#elif defined (__GNUC__)        /*!< GNU compiler */
-#pragma GCC optimize ("O0")
-#elif defined  (__TASKING__)    /*!< TASKING compiler */
-#pragma optimize=0
-#endif /* __CC_ARM */
 
 /* local function prototypes ('static') */
 static uint32_t usbh_int_port(usb_core_driver *udev);
@@ -160,9 +153,6 @@ static inline void usb_pp_halt(usb_core_driver *udev,
     \param[out] none
     \retval     operation status
 */
-#if defined (__ICCARM__)      /*!< IAR compiler */
-#pragma optimize = none
-#endif /* __ICCARM */
 static uint32_t usbh_int_port(usb_core_driver *udev)
 {
     uint32_t retval = 0U;
